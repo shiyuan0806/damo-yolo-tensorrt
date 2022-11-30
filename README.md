@@ -2,7 +2,7 @@
 
 
 
-1. 先从damo yolo官方导出trt model，官方只支持tensorrt7，可以修改为8的，这个非常简单，注意导出end2end
+1. 先从damo yolo官方导出trt model，官方只支持tensorrt7，可以修改为8的，这个非常简单，注意导出end2end,可以将converter2直接替换原始的converter
    
    ```bash
    python tools/converter.py -f configs/damoyolo_tinynasL25_S.py -c damoyolo_tinynasL25_S.pth --batch_size 1 --img_size 640 --trt --end2end --half
