@@ -16,3 +16,7 @@
    ./yolort_trt --image ../samples/0126.jpg --model_path ../damoyolo_tinynasL25_S_end2end_fp16_bs1.trt --class_names ../coco.names
    ```
 3. 可能还有些小问题，预处理、后处理啥的还没验证对齐，先跑通再说，之前连batchedNMS都不会处理，想起走佬之前提起这个插件，借鉴一下~
+4. 注意事项
+   * 若要修改为tensorrt8使用efficientNMS则注意第一步的指令加上tensorrt版本或者直接文件里面把default修改
+   * batchedNMS目前直接用走佬的没发现什么问题，具体的参数还没深入研究，修改完阈值之后，可以把cpp部分的“if (detection_scores[i] < 0.25) continue;”删除
+   * 采用TRT8的efficientNMS，需要把end2end.py里面的ONNX_TRT8类中self.box_coding = 0进行修改，否则解码会出现问题

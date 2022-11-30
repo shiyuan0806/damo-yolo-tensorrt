@@ -64,7 +64,7 @@ def make_parser():
     parser.add_argument('--trt-version',
                         type=int,
                         default=7,
-                        help='tensorrt version')
+                        help='tensorrt version')  # 在这边修改下tensorrt的版本，如果想要用efficientNMS，同时注意end2end.py里面
     parser.add_argument('--end2end',
                         action='store_true',
                         help='export end2end onnx')
@@ -88,7 +88,7 @@ def make_parser():
     parser.add_argument('--conf-thres',
                         type=float,
                         default=0.05,
-                        help='conf threshold for NMS')
+                        help='conf threshold for NMS')  # 这个也改大一点，不然全是框
     parser.add_argument('--device',
                         default='0',
                         help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
