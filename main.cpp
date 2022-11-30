@@ -431,7 +431,8 @@ std::vector<Detection> YOLOv5Detector::detect(cv::Mat &image) {
     int x_offset = (input_w * scale - image.cols) / 2;
     int y_offset = (input_h * scale - image.rows) / 2;
     for (int32_t i = 0; i < num_detections; i++) {
-        if (detection_scores[i] < 0.25) continue;  // 需要研究下batched_nms
+        // if (detection_scores[i] < 0.25) continue;  // 需要研究下batched_nms
+		// 之前置信度设置太低了，合理设置置信度就可以不需要这个
         result.emplace_back();
         Detection &detection = result.back();
         detection.box.x = detection_boxes[4 * i] * scale - x_offset;
